@@ -37,5 +37,4 @@ function Signal() {
         server.closeIdleConnections();
     }, 9500);
 }
-setInterval(Signal, 10001)
 
