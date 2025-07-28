@@ -9,7 +9,11 @@ fetch('./myship.json')
         const systemsOffline = data.systemsOffline;
         const engineStatus = data.engineStatus;
 
-        const fuel = (data.fuelLevel / 100) * 100;
+        //const fuel = (data.fuelLevel / 100) * 100;
+        //----------------------------------------------------------
+
+        //---------------------------------------------------------
+        let fuel = (data.fuelLevel / 100) * 100;
 
         let fuelBar = null;
         if (fuel === 0) fuelBar = ` - ${fuel}% `;
@@ -38,7 +42,14 @@ fetch('./myship.json')
         if (engine >= 81 && 90 >= engine) engineBar = `||||||||| - ${engine}% `;
         if (engine >= 91 && 100 >= engine) engineBar = `|||||||||| - ${engine}% `;
 
-        let result = "<strong>Ship ID:</strong> " + shipName + "<br><strong>Ship Type</strong>: " + shipType + "<br><strong>Ship Class</strong>: " + shipClass + "<br><strong>Fuel Levels</strong>: <strong>" + fuelBar + " |</strong> <i>" + data.fuelLevel + "/100</i>" + "<br><strong>Engine Health</strong>: <strong>" + engineBar + " |</strong> <i>" + data.engineStatus + "/100</i>" + "<br><br><strong>Location</strong>: " + shipLocation + "<br><strong>Online</strong> : " + systemsOnline + "<br><strong>Offline</strong> :" + systemsOffline
+        //--------------------------------------------------------
 
-        document.getElementById("status").innerHTML = result;
+        let result1 = "<strong>Ship ID:</strong> " + shipName + "<br><strong>Ship Type</strong>: " + shipType + "<br><strong>Ship Class</strong>: " + shipClass
+
+
+
+        let result3 = engineBar + " |</strong> <i>" + data.engineStatus + "/100</i>" + "<br><br><strong>Location</strong>: " + shipLocation + "<br><strong>Online</strong> : " + systemsOnline + "<br><strong>Offline</strong> :" + systemsOffline
+
+        document.getElementById("status").innerHTML += result1;
+        document.getElementById("status").innerHTML += result3;
     })

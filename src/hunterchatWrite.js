@@ -1,4 +1,4 @@
-const fs = require('node:fs');
+/*const fs = require('node:fs');
 const http = require('http');
 function read(x) {
     try {
@@ -38,3 +38,4 @@ function Signal() {
     }, 9500);
 }
 
+*/
