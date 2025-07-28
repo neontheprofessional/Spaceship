@@ -1,0 +1,237 @@
+<html>
+
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Workbench&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+    h1 {
+      letter-spacing: 10px;
+      margin-bottom: 1px;
+    }
+
+    h2 {
+      text-align: left;
+    }
+
+    h3 {
+      text-align: left;
+
+    }
+
+    body {
+      font-size: 90%;
+      font-family: "Orbitron";
+      font-style: mono;
+      color: rgb(110, 216, 249);
+      letter-spacing: 1px;
+      text-shadow: 0 0 1.5px rgb(255, 255, 255, 0);
+      background-image: url("stars1.jpg");
+      background-size: 1800px;
+      background-repeat: no-repeat;
+      background-position: right top;
+      background-attachment: fixed;
+      margin-top: 20px;
+      margin-right: 50px;
+      margin-left: 50px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-areas:
+        "content log"
+        "content talk"
+        "stats stats"
+        "tester assignments"
+        "menu menu";
+      grid-template-columns: 2fr 3fr;
+      gap: 15px;
+      padding: 10px;
+    }
+
+    .container>div {
+      padding-left: 25px;
+      padding-top: 1px;
+      padding-bottom: 10px;
+      outline: .5px solid;
+      outline-color: rgb(119, 212, 255);
+      border-radius: 2px;
+      backdrop-filter: blur(12px);
+      filter: blur(0px);
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), 1px 1px 10px rgba(0, 0, 0, 0) inset;
+      background-color: rgba(21, 38, 61, 0.4)
+    }
+
+    .container>div.menu {
+      padding-right: 25px;
+      grid-area: menu;
+
+    }
+
+    .container>div.content {
+      padding-right: 5px;
+      text-align: center;
+
+      grid-area: content;
+
+    }
+
+    .container>div.assignments {
+      grid-area: assignments;
+      padding-right: 25px;
+    }
+
+    .container>div.tester {
+      grid-area: tester;
+      padding-right: 25px;
+
+    }
+
+    .container>div.stats {
+      grid-area: stats;
+      padding-right: 25px;
+      padding-top: 1px;
+      padding-bottom: 1px;
+
+    }
+
+    .container>div.log {
+      grid-area: log;
+      padding-right: 25px;
+      height: 320px;
+      overflow: scroll;
+      scrollbar-color: rgb(119, 212, 255) rgba(21, 38, 61, 0.4);
+      scrollbar-width: thin;
+
+    }
+
+    .container>div.talk {
+      grid-area: talk;
+      padding-right: 25px;
+      padding-top: 1px;
+      padding-bottom: 1px;
+
+    }
+
+
+    #map {
+      letter-spacing: 17px;
+      color: rgb(255, 85, 33);
+    }
+
+    #tester {
+      color: rgb(255, 191, 73);
+    }
+
+    #assignments {
+      color: rgb(255, 191, 73);
+    }
+
+    a:link {
+      color: rgb(255, 116, 73);
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: rgb(255, 116, 73);
+      text-decoration: none;
+    }
+
+    abbr {
+      text-decoration: none;
+    }
+
+    li {
+      position: relative;
+      cursor: crosshair;
+      display: inline-block;
+      letter-spacing: 1px;
+    }
+
+    li:after {
+      content: attr(data-info);
+      position: absolute;
+      top: -1.75rem;
+      left: 0;
+    }
+
+    li:after {
+      --tooltipScale: 0;
+      content: attr(data-info);
+      position: absolute;
+      top: 1.75rem;
+      left: 0;
+      transform: scale(var(--tooltipScale));
+      transform-origin: bottom left;
+      transition: 0.1s transform;
+    }
+
+    li:hover:after {
+      --tooltipScale: 1;
+    }
+
+    input {
+      font-size: 90%;
+      font-family: "Orbitron";
+      font-style: mono;
+      color: rgb(110, 216, 249);
+      letter-spacing: 1px;
+      background-color: rgba(78, 108, 150, 0.4);
+      border: 1.5px solid rgb(119, 212, 255, 0.6);
+      max-width: 100%;
+    }
+  </style>
+
+  <h1 style="text-align: center;">SHIPNAV: welcome, PILOT</h1>
+</head>
+
+<body>
+
+
+  <div class="container">
+
+    <div class="menu">
+      <h3>Menu</h3><a href="#">Link 1</a><br><a href="#">Link 2</a><br><a href="#">Link 3</a>
+    </div>
+    <div class="content">
+      <h3>LOCATION</h3>
+      <p id="map"></p>
+    </div>
+    <div class="assignments">
+      <h3>Assignments</h3>
+      <p id="assignments"></p>
+    </div>
+    <div class="tester">
+      <h3>SYSTEM</h3>
+      <p id="tester"></p>
+    </div>
+    <div class="stats">
+      <p id="stats"></p>
+    </div>
+    <div class="log">
+      <h3> RADIO </h3>
+      <p id="radio"></p>
+    </div>
+    <div class="talk">
+      <p id="talk"></p>
+      <form id="form" action="javascript:;">
+        <input type="text" id="input" autocomplete="off" />
+        <input type="submit" id="submit" value="TRANSMIT" />
+      </form>
+    </div>
+    <script src="./systemcheck.js"></script>
+    <script src="./syslogjs.js"></script>
+    <script src="./map.js"></script>
+    <script src="./syslog.json"></script>
+    <script src="./sherlock.js"></script>
+    <script type="module" src="./radio.js"></script>
+    <script src="./chatter.js"></script>
+    <script src="./hunterchat.js"></script>
+    <script src="./hunterchatWrite.js"></script>
+
+
+
+</body>
+
+</html>
