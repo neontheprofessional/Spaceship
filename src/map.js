@@ -30,7 +30,7 @@ const regexH = "<span>h</span>"
 map = map.replace(regexH, '<a href ="./Research_Vessel_40N73R.html"><li data-info="Research Vessel 40N73R">\>[]\<</li></a>');
 const regexShip = "<span>@</span>";
 //map = map.replace(regexAt, '<a href="$"<abbr title="Your Ship">@</abbr></a>');
-map = map.replace(regexShip, '<span><a href ="./shipInfo.html"><li data-info="L.X47">,(|);</li></a></span>');
+map = map.replace(regexShip, '<span><a href ="./ship_info.html"><li data-info="L.X47">,(|);</li></a></span>');
 //<div data-tooltip="Ship">@</div>
 
 const regexPlus = /\+/g;
