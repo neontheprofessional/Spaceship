@@ -3,6 +3,7 @@ fetch('./syslog.json')
     .then(data => {
         const hydration = (data.WaterLog / 2000) * 100;
         const caffeination = (data.CaffeineLog / 200) * 100;
+        const bits = data.Bits + " ⓑ";
         const test = 90;
 
         let waterBar = null;
@@ -33,7 +34,7 @@ fetch('./syslog.json')
         if (caffeination >= 61 && 70 >= caffeination) caffeineBar = `||||||| - ${caffeination}% `;
         if (caffeination >= 71 && 80 >= caffeination) caffeineBar = `|||||||| - ${caffeination}% `;
         if (caffeination >= 81 && 90 >= caffeination) caffeineBar = `||||||||| - ${caffeination}% `;
-        if (caffeination >= 91 && 100 >= caffeination) caffeineBar = `|||||||||| - ${caffeination}% `;
+        if (caffeination >= 101) caffeineBar = `|||||||||| - ${caffeination}% `;
 
         // Test bar logic
         if (test === 0) testBar = ` - ${test}% `;
@@ -47,10 +48,12 @@ fetch('./syslog.json')
         if (test >= 71 && 80 >= test) testBar = `|||||||| - ${test}% `;
         if (test >= 81 && 90 >= test) testBar = `||||||||| - ${test}% `;
         if (test >= 91 && 100 >= test) testBar = `|||||||||| - ${test}% `;
+        if (test >= 101) testBar = `|||||||||| - ${test}% `;
 
         let resultTest = "hydration levels: " + waterBar + "<br>" +
             "caffeine levels: " + caffeineBar + "<br>" +
-            "test levels: " + testBar;
+            "test levels: " + testBar + "<br>" +
+            "bits: " + bits;
 
         document.getElementById("tester").innerHTML = resultTest;
     })
