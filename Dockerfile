@@ -1,3 +1,6 @@
-FROM nginx:alpine
-COPY default.conf /etc/nginx/conf.d/default.conf
-COPY index.html /usr/share/nginx/html/index.html
+FROM nginx
+
+RUN mkdir /etc/nginx/logs && touch /etc/nginx/logs/static.log
+
+ADD ./nginx.conf /etc/nginx/conf.d/default.conf
+ADD /src /www
