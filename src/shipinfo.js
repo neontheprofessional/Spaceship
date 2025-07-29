@@ -9,11 +9,8 @@ fetch('./myship.json')
         const systemsOffline = data.systemsOffline;
         const engineStatus = data.engineStatus;
 
-        //const fuel = (data.fuelLevel / 100) * 100;
+        const fuel = (data.fuelLevel / 100) * 100;
         //----------------------------------------------------------
-
-        //---------------------------------------------------------
-        let fuel = (data.fuelLevel / 100) * 100;
 
         let fuelBar = null;
         if (fuel === 0) fuelBar = ` - ${fuel}% `;

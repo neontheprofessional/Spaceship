@@ -1,6 +1,6 @@
 
 //MAP
-map = `<span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>*</span><span>.</span><span>.</span><span>.</span><span>.</span><span>a</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><br>
+let map = `<span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>*</span><span>.</span><span>.</span><span>.</span><span>.</span><span>a</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><br>
 <span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><br>
 <span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><br>
 <span>.</span><span>.</span><span>d</span><span>.</span><span>.</span><span>.</span><span>.</span><span>*</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><span>.</span><br>

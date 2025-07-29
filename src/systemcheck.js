@@ -61,29 +61,29 @@ fetch('./syslog.json')
         document.getElementById("tester").innerHTML = "Error: " + error.message;
         console.error('Error loading JSON:', error);
     });
-
+/*
 let rndInt = randomIntFromInterval(136248000, 6387292000);
 
 // Update rndInt every 3 seconds (3000 ms)
 setInterval(function () {
-    rndInt = randomIntFromInterval(136248000, 6387292000);
+    rndInt = randomIntFromInterval(136240, 638700);
     // Print the random int update (optional)
     document.getElementById("stats").innerHTML += rndInt;
-}, 300);
+}, 500);
 //-------------------------
 
 // Update rndInt every 3 seconds (3000 ms)
+*/
 
-
-// Update stats display every 1 second (1000 ms)
-setInterval(myTimer, 300);
+// Update stats display every 1 second (1000 ms)/*
+setInterval(myTimer, 500);
 
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 function myTimer() {
     const d = new Date();
-    document.getElementById("stats").innerHTML = "<strong> TIME </strong> | " + d.toLocaleTimeString() + " | <strong>LOCATION</strong>: GALIMA QDT " + " | <strong>SCANNING</strong>: | " + rndInt
+    document.getElementById("stats").innerHTML = "<strong> TIME </strong> | " + d.toLocaleTimeString() + " | <strong>LOCATION</strong>: GALIMA QDT "/* + " | <strong>SCANNING</strong>: | " + rndInt*/
 }
 
 

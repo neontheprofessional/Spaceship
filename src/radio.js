@@ -1,4 +1,5 @@
 
+import { sayHi } from './hunterchatWrite.js';
 const time = new Date().getHours();
 let timegreet = "";
 if (time < 10) {
@@ -68,14 +69,10 @@ myForm.addEventListener('submit', function (event) {
 
     //------------------------------
     if (nameValue.includes("SHIP")) {
-        fetch('./syslog.json')
-            .then(response => response.json())
-            .then(data => {
-                const shipName = data.Bits;
 
-                const myElement = document.getElementById('radio');
-                myElement.innerHTML += "<br>" + shipName
+        sayHi(nameValue); // Hello, John!
 
-            })
+
+
     }
 });
