@@ -46,10 +46,11 @@ fetch('./myship.json')
 
         let result1 = "<strong>Ship ID:</strong> " + shipName + "<br><strong>Ship Type</strong>: " + shipType + "<br><strong>Ship Class</strong>: " + shipClass
 
-
+        let result2 = "<br><strong>Fuel Levels</strong>: <strong>" + fuelBar + " |</strong> <i>" + fuel + "/100</i>" + "<br><strong>Engine Health</strong>: <strong>"
 
         let result3 = engineBar + " |</strong> <i>" + data.engineStatus + "/100</i>" + "<br><br><strong>Location</strong>: " + shipLocation + "<br><strong>Online</strong> : " + systemsOnline + "<br><strong>Offline</strong> :" + systemsOffline
 
         document.getElementById("status").innerHTML += result1;
+        document.getElementById("status").innerHTML += result2;
         document.getElementById("status").innerHTML += result3;
     })
