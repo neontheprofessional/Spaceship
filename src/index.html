@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Workbench&display=swap');
@@ -12,13 +14,24 @@
       margin-bottom: 1px;
     }
 
+    h1:hover {
+      text-shadow: 0 0 3px rgb(110, 216, 249, 0.5);
+    }
+
     h2 {
       text-align: left;
     }
 
+    h2:hover {
+      text-shadow: 0 0 3px rgb(110, 216, 249, 0.5);
+    }
+
     h3 {
       text-align: left;
+    }
 
+    h3:hover {
+      text-shadow: 0 0 3px rgb(110, 216, 249, 0.5);
     }
 
     body {
@@ -29,26 +42,35 @@
       letter-spacing: 1px;
       text-shadow: 0 0 1.5px rgb(255, 255, 255, 0);
       background-image: url("stars1.jpg");
-      background-size: 1800px;
+      background-size: auto;
       background-repeat: no-repeat;
       background-position: right top;
       background-attachment: fixed;
       margin-top: 80px;
-      margin-right: 200px;
-      margin-left: 200px;
+      margin: auto;
+      max-width: 1000px;
     }
+
+    p:hover {
+      text-shadow: 0 0 3px rgba(18, 105, 131, 0.5);
+      max-width: 100%;
+
+    }
+
 
     .container {
       display: grid;
       grid-template-areas:
-        "content log"
-        "content talk"
-        "stats stats"
-        "tester assignments"
-        "menu menu";
-      grid-template-columns: 2fr 3fr;
+        "content log log"
+        "content talk audioPlayer"
+        "stats stats stats"
+        "tester assignments assignments"
+        "menu menu menu";
+      grid-template-columns: 3fr 3fr;
       gap: 15px;
       padding: 10px;
+      max-width: 100%;
+      height: auto;
     }
 
     .container>div {
@@ -67,16 +89,16 @@
     .container>div.menu {
       padding-right: 25px;
       grid-area: menu;
-
     }
 
     .container>div.content {
       padding-right: 5px;
       text-align: center;
-
       grid-area: content;
-
     }
+
+
+
 
     .container>div.assignments {
       grid-area: assignments;
@@ -86,7 +108,6 @@
     .container>div.tester {
       grid-area: tester;
       padding-right: 25px;
-
     }
 
     .container>div.stats {
@@ -94,8 +115,8 @@
       padding-right: 25px;
       padding-top: 1px;
       padding-bottom: 1px;
-
     }
+
 
     .container>div.log {
       grid-area: log;
@@ -104,16 +125,23 @@
       overflow: scroll;
       scrollbar-color: rgb(119, 212, 255) rgba(21, 38, 61, 0.4);
       scrollbar-width: thin;
-
     }
 
     .container>div.talk {
       grid-area: talk;
       padding-right: 25px;
       padding-top: 1px;
-      padding-bottom: 1px;
-
+      padding-bottom: 15px;
     }
+
+    .container>div.audioPlayer {
+      grid-area: audioPlayer;
+      padding-right: 25px;
+      padding-top: 1px;
+      padding-bottom: 15px;
+    }
+
+
 
 
     #map {
@@ -121,12 +149,25 @@
       color: rgb(255, 85, 33);
     }
 
+    #map:hover {
+      color: rgb(175, 47, 8);
+    }
+
     #tester {
       color: rgb(255, 191, 73);
     }
 
+    #tester:hover {
+      text-shadow: 0 0 5px rgb(255, 191, 73, 0.5);
+
+    }
+
     #assignments {
       color: rgb(255, 191, 73);
+    }
+
+    #assignments:hover {
+      text-shadow: 0 0 3px rgb(255, 191, 73, 0.5);
     }
 
     a:link {
@@ -137,6 +178,12 @@
     a:visited {
       color: rgb(255, 116, 73);
       text-decoration: none;
+    }
+
+    a:hover {
+      color: rgb(255, 92, 43);
+      text-shadow: 0 0 .4em rgb(255, 92, 43, 0.5);
+
     }
 
     abbr {
@@ -179,20 +226,70 @@
       color: rgb(110, 216, 249);
       letter-spacing: 1px;
       background-color: rgba(78, 108, 150, 0.4);
+      border: .15em solid rgb(119, 212, 255, 0.6);
+      max-width: 60%;
+      margin-top: .1em;
+    }
+
+    input:focus {
+      outline: none;
+      /* Removes the default browser outline */
+      border: 1px solid rgba(86, 216, 255, 1);
+      /* Sets a new border color for the glow */
+      box-shadow: 0 0 3px rgb(110, 216, 249, 0.5);
+      /* Adds the glowing effect */
+    }
+
+    input:hover {
+      background-color: rgb(14, 41, 58);
+      text-shadow: 0 0 3px rgb(110, 216, 249, 0.5);
+
+    }
+
+    button {
+      font-size: 90%;
+      font-family: "Orbitron";
+      font-style: mono;
+      color: rgb(110, 216, 249);
+      letter-spacing: 1px;
+      background-color: rgba(78, 108, 150, 0.4);
       border: 1.5px solid rgb(119, 212, 255, 0.6);
-      max-width: 100%;
-      padding-bottom: 5px;
+      max-width: auto;
+      margin-top: .1em;
+    }
+
+    button:focus {
+      outline: none;
+      /* Removes the default browser outline */
+      border: 1px solid rgba(86, 216, 255, 1);
+      /* Sets a new border color for the glow */
+      box-shadow: 0 0 3px rgb(110, 216, 249, 0.5);
+      /* Adds the glowing effect */
+    }
+
+    button:hover {
+      background-color: rgb(14, 41, 58);
+      text-shadow: 0 0 3px rgb(110, 216, 249, 0.5);
+
     }
   </style>
 
-  <h1 style="text-align: center;">SHIPNAV: welcome, PILOT</h1>
+  <h1 style="text-align: center">SHIPNAV: welcome, PILOT</h1>
 </head>
 
 <body>
 
 
+
   <div class="container">
 
+    <div class="audioPlayer">
+      <p id="tunes"></p>
+      <button type="button" id="play">LISTEN TO SPG-FM &#9658</button>
+      <audio id="player">
+        <source src="./tunes/Something About Us.mp3" type='audio/mpeg' />
+      </audio>
+    </div>
     <div class="menu">
       <h3>Menu</h3><a href="#">Link 1</a><br><a href="#">Link 2</a><br><a href="#">Link 3</a>
     </div>
@@ -222,19 +319,25 @@
         <input type="submit" id="submit" value="TRANSMIT" />
       </form>
     </div>
-    <script type="module" src="./systemcheck.js"></script>
-    <script type="module" src="./syslogjs.js"></script>
+    <script type="module" src="./syslog.js"></script>
     <script type="module" src="./map.js"></script>
-    <script type="module" src="./syslog.json"></script>
+    <script type="text/html" src="./syslog.json"></script>
     <script type="module" src="./sherlock.js"></script>
     <script type="module" src="./radio.js"></script>
     <script type="module" src="./chatter.js"></script>
     <script type="module" src="./hunterchat.js"></script>
     <script type="module" src="./hunterchatWrite.js"></script>
-    <script type="module" src="./statDegrade.js"></script>
+    <script type="module" src="./assignments.js"></script>
+    <script type="module" src="./audioplayer.js"></script>
+    <script type="module" src="./audio.js"></script>
 
 
 
+</body>
+
+<body>
+  <script>0</script>
+  <!-- rest of the code -->
 </body>
 
 </html>

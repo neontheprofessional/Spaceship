@@ -1,5 +1,4 @@
 
-import { sayHi } from './hunterchatWrite.js';
 const time = new Date().getHours();
 let timegreet = "";
 if (time < 10) {
@@ -29,7 +28,6 @@ function rand(array) {
 const myForm = document.getElementById('form');
 myForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent default form submission
-
     const nameValue = document.getElementById('input').value;
     const myElement = document.getElementById('radio');
     //CHECKING VALID MESSAGE//
@@ -68,9 +66,8 @@ myForm.addEventListener('submit', function (event) {
 
 
     //------------------------------
-    if (nameValue.includes("SHIP")) {
-
-        sayHi(nameValue); // Hello, John!
+    if (nameValue.includes("HNTR")) {
+        fetch(`https://brodcast.aether-tree.com/Kay/Outbound/${nameValue}`)
 
 
 
