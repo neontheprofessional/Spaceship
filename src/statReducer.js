@@ -22,14 +22,15 @@ function setCookie(cname, cvalue, exdays) {
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+//-----------------------------------------
 
-
-setInterval(reduceFuel, 3600000);
+setInterval(reduceFuel, 600000);
 
 function reduceFuel() {
     var fuel = Number(getCookie("fuel"))
     if (fuel > 0) {
-        const newFuel = fuel - 10
+        const reduceAmount = getCookie("reduceAmount")
+        const newFuel = fuel - reduceAmount
         setCookie("fuel", newFuel)
 
     }

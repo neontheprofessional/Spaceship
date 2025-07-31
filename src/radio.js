@@ -97,7 +97,7 @@ if (time < 10) {
 const STNA = {
     "greeting": [`@SHIP good ${timegreet}`],
     "trade": [`@SHIP Sorry, I can't spare any`, `@SHIP Sure, I can do 5&#x2102; for a tank`],
-    "tradeYes": [`('-')7`]
+    "tradeYes": [`('-')7`],
 };
 //-------------------------------
 
@@ -124,6 +124,15 @@ function getCookie(cname) {
 }
 //-------------------------------
 
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+//-------------------------------
+
+
 const myForm = document.getElementById('form');
 myForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent default form submission
@@ -133,10 +142,28 @@ myForm.addEventListener('submit', function (event) {
     var message = nameinput.split("-")[1]
     const myElement = document.getElementById('radio');
     //CHECKING VALID MESSAGE//
+
+    /*
+    if (nameValue.includes("@")) {
+        fetch(`https:Brodcast.aether-tree.com/u/${nameValue}/Outbound/${message}`);
+        let newlog = `<br> <strong>\>SHIP</strong>: ${nameValue}:// ${message}`;
+        myElement.innerHTML += newlog
+        setTimeout(function () {
+            myElement.innerHTML +=
+                "<br>---[<strong>MESSAGE TRANSMITTED</strong>]---<br>"
+        }, 1000);
+    */
     if (nameValue.includes("@")) {
         setTimeout(function () {
             let newlog = "<br> <strong>\>SHIP</strong>: " + nameValue + " " + message;
             myElement.innerHTML += newlog
+            setTimeout(function () {
+                myElement.innerHTML +=
+                    "<br>---[<strong>MESSAGE TRANSMITTED</strong>]---<br>"
+                var credits = getCookie("credits")
+                var newCredits = credits - 1
+                setCookie("credits", newCredits)
+            }, 1000);
         }, 1000);
     } else {
         setTimeout(function () {
@@ -145,9 +172,21 @@ myForm.addEventListener('submit', function (event) {
     }
     //IF VALID MESSAGE//
     // Reply logic
-    if (nameValue.includes("STNA")) {
+    if (nameValue.includes("STNA") && message.includes("hi")) {
         setTimeout(function () {
             const reply = rand(STNA["greeting"]);
+            myElement.innerHTML += "<br>\><strong>STNA</strong>: " + reply + "<br>";
+        }, 5000);
+    }
+    if (nameValue.includes("STNA") && message.includes("trade")) {
+        setTimeout(function () {
+            const reply = rand(STNA["trade"]);
+            myElement.innerHTML += "<br>\><strong>STNA</strong>: " + reply + "<br>";
+        }, 5000);
+    }
+    if (nameValue.includes("STNA") && message.includes("accept")) {
+        setTimeout(function () {
+            const reply = rand(STNA["tradeYes"]);
             myElement.innerHTML += "<br>\><strong>STNA</strong>: " + reply + "<br>";
         }, 5000);
     }
@@ -169,6 +208,13 @@ myForm.addEventListener('submit', function (event) {
     if (nameValue.includes("SEND")) {
         fetch(`https:Brodcast.aether-tree.com/u/Kay/Outbound/${message}`);
         let newlog = `<br> <strong>\>BROADCASTING</strong>: ${message}`;
+        myElement.innerHTML += newlog
+
+    }
+
+    if (nameValue.includes("NAME")) {
+        fetch(`https:Brodcast.aether-tree.com/u/Kay/Name/${message}`);
+        let newlog = `<br> <strong>\>REASSIGNING CALLSIGN</strong>: ${message}`;
         myElement.innerHTML += newlog
 
     }

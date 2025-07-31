@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', async function () {
     /*    try {
             const response = await fetch('https://brodcast.aether-tree.com/a/Hunter/Outbound');

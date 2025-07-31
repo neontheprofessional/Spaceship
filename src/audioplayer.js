@@ -6,7 +6,31 @@ function rand(array) {
     const randomItem = array[Math.floor(Math.random() * array.length)];
     return randomItem;
 }
-// Update the image source
+// -----------------------------------------------------
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+// -----------------------------------------------------
+
 
 button.addEventListener("click", function () {
     if (audio.paused) {
@@ -27,14 +51,18 @@ button.addEventListener("click", function () {
         button.innerHTML = "DISCONNECT &#x23F8";
         var message = "Now listening to SPG-FM, home of exactly 10 songs"
         fetch(`https:Brodcast.aether-tree.com/u/Kay/Music/${message}`);
-
+        setCookie("reduceAmount", 2)
     } else {
         audio.pause();
         button.innerHTML = "LISTEN TO SPG-FM &#9658";
         var message = "Now listening to the silence of the Void"
         fetch(`https:Brodcast.aether-tree.com/u/Kay/Music/${message}`);
     }
+    if (Number(getCookie("fuel")) < 10) {
+        document.getElementById("play").disabled = true;
+    }
 });
+
 
 //------------------------------------------------
 /*

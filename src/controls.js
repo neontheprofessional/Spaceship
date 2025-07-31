@@ -34,6 +34,9 @@ button.addEventListener("click", function () {
         newFuel = Number(fuel) + 50
     }
     setCookie("fuel", newFuel)
+    var credits = getCookie("credits")
+    var newCredits = credits - 5
+    setCookie("credits", newCredits)
     document.getElementById("radio").innerHTML += "<br>\><strong>SHIP SYSTEM</strong>: FUEL REFILLED: " + newFuel + "&#8461"
 })
 
@@ -47,6 +50,7 @@ button2.addEventListener("click", function () {
         setCookie("status", "autopilot")
         document.getElementById("radio").innerHTML += "<br>---<strong>[&#9790;] CONTROLS SET TO AUTOPILOT [&#9789;]</strong>---"
         const message = "[SYSTEM SET TO AUTOPILOT]"
+        setCookie("reduceAmount", 5)
         fetch(`https:Brodcast.aether-tree.com/u/Kay/Outbound/${message}`);
 
     }
