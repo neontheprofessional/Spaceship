@@ -23,7 +23,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 //------------------------------------------------------
-
+//REFUELLER
 var button = document.getElementById("buy");
 var newFuel = null;
 button.addEventListener("click", function () {
@@ -35,11 +35,29 @@ button.addEventListener("click", function () {
     }
     setCookie("fuel", newFuel)
     document.getElementById("radio").innerHTML += "<br>\><strong>SHIP SYSTEM</strong>: FUEL REFILLED: " + newFuel + "&#8461"
-
-
 })
 
 
+var button2 = document.getElementById("autopilot");
+
+button2.addEventListener("click", function () {
+
+    const shipStatus = getCookie("status")
+    if (shipStatus === "manual") {
+        setCookie("status", "autopilot")
+        document.getElementById("radio").innerHTML += "<br>---<strong>[&#9790;] CONTROLS SET TO AUTOPILOT [&#9789;]</strong>---"
+        const message = "[SYSTEM SET TO AUTOPILOT]"
+        fetch(`https:Brodcast.aether-tree.com/u/Kay/Outbound/${message}`);
+
+    }
+    else if (shipStatus === "autopilot") {
+        setCookie("status", "manual")
+        document.getElementById("radio").innerHTML += "<br>---<strong>CONTROLS SET TO MANUAL</strong>---"
+        const message = "[SYSTEM SET TO MANUAL - PILOT ONLINE]"
+        fetch(`https:Brodcast.aether-tree.com/u/Kay/Outbound/${message}`);
+    }
+
+})
 
 
 

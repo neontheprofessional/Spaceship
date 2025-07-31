@@ -15,14 +15,16 @@ function getCookie(cname) {
     return "";
 }
 //--------------------------------------------------------------
+
 setInterval(function () {
     fetch('./syslog.json')
         .then(response => response.json())
         .then(data => {
             const hydration = (data.WaterLog / 2000) * 100;
             const caffeination = (data.CaffeineLog / 200) * 100;
-            const shipCreds = Number(getCookie("Credits"))
+            const shipCreds = Number(getCookie("credits"))
             const credits = data.Credits + shipCreds
+            const shipStatus = getCookie("status")
             var test = Math.floor((Number(getCookie("fuel")) / 100) * 100)
             let waterBar = null;
             let caffeineBar = null;
@@ -70,7 +72,7 @@ setInterval(function () {
 
             if (test === null) { testBar = "empty" }
 
-            let resultTest = "hydration levels: " + waterBar + "<br>" +
+            let resultTest = "status: " + shipStatus + "<br> hydration levels: " + waterBar + "<br>" +
                 "caffeine levels: " + caffeineBar + "<br>" +
                 "fuel levels: " + testBar + "<br>" +
                 "credits: " + credits + "&#8450" + "<br>"

@@ -31,6 +31,7 @@ function reduceFuel() {
     if (fuel > 0) {
         const newFuel = fuel - 10
         setCookie("fuel", newFuel)
+
     }
 }
 
