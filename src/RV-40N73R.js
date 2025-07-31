@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        const response = await fetch('https://brodcast.aether-tree.com/');
+        const response = await fetch('https://brodcast.aether-tree.com/Hunter');
         const body = await response.text();
         const radio = document.getElementById("shipMessage");
         radio.innerHTML = body;

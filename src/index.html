@@ -63,8 +63,8 @@
       grid-template-areas:
         "content log log"
         "content talk audioPlayer"
-        "stats stats stats"
-        "tester assignments assignments"
+        "controls stats stats"
+        "system assignments assignments"
         "menu menu menu";
       grid-template-columns: 3fr 3fr;
       gap: 15px;
@@ -97,26 +97,21 @@
       grid-area: content;
     }
 
-
-
-
     .container>div.assignments {
       grid-area: assignments;
       padding-right: 25px;
     }
 
-    .container>div.tester {
-      grid-area: tester;
+    .container>div.system {
+      grid-area: system;
       padding-right: 25px;
     }
 
     .container>div.stats {
       grid-area: stats;
       padding-right: 25px;
-      padding-top: 1px;
-      padding-bottom: 1px;
-    }
 
+    }
 
     .container>div.log {
       grid-area: log;
@@ -125,6 +120,7 @@
       overflow: scroll;
       scrollbar-color: rgb(119, 212, 255) rgba(21, 38, 61, 0.4);
       scrollbar-width: thin;
+      color: #77d4ff
     }
 
     .container>div.talk {
@@ -141,8 +137,16 @@
       padding-bottom: 15px;
     }
 
+    .container>div.controls {
+      grid-area: controls;
+      padding-right: 25px;
+      padding-bottom: 15px;
 
+    }
 
+    #stats {
+      padding-top: 1em;
+    }
 
     #map {
       letter-spacing: 17px;
@@ -153,11 +157,11 @@
       color: rgb(175, 47, 8);
     }
 
-    #tester {
+    #system {
       color: rgb(255, 191, 73);
     }
 
-    #tester:hover {
+    #system:hover {
       text-shadow: 0 0 5px rgb(255, 191, 73, 0.5);
 
     }
@@ -168,6 +172,11 @@
 
     #assignments:hover {
       text-shadow: 0 0 3px rgb(255, 191, 73, 0.5);
+    }
+
+    #buy {
+      margin-top: 2em;
+      margin-bottom: -3em
     }
 
     a:link {
@@ -301,12 +310,16 @@
       <h3>Assignments</h3>
       <p id="assignments"></p>
     </div>
-    <div class="tester">
+    <div class="system">
       <h3>SYSTEM</h3>
-      <p id="tester"></p>
+      <p id="system"></p>
     </div>
     <div class="stats">
       <p id="stats"></p>
+    </div>
+    <div class="controls">
+      <button id="buy">buy fuel</button>
+      <p id="controls"></p>
     </div>
     <div class="log">
       <h3> RADIO </h3>
@@ -330,6 +343,7 @@
     <script type="module" src="./assignments.js"></script>
     <script type="module" src="./audioplayer.js"></script>
     <script type="module" src="./audio.js"></script>
+    <script type="module" src="./statreducer.js"></script>
 
 
 

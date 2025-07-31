@@ -1,4 +1,79 @@
 
+/*const time = new Date().getHours();
+let timegreet = "";
+if (time < 10) {
+    timegreet = "morning";
+} else if (time < 20) {
+    timegreet = "afternoon";
+} else {
+    timegreet = "evening";
+}
+//-------------------------------
+
+//------------------------------
+
+const STNA = {
+    "greeting": [`@SHIP good ${timegreet}`],
+};
+//-------------------------------
+
+function rand(array) {
+    const randomItem = array[Math.floor(Math.random() * array.length)];
+    return randomItem;
+}
+
+//-------------------------------
+//-------------------------------
+
+const myForm = document.getElementById('form');
+myForm.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form submission
+    const nameValue = document.getElementById('input').value;
+    const myElement = document.getElementById('radio');
+    //CHECKING VALID MESSAGE//
+    if (nameValue.includes("@")) {
+        let newlog = "<br> <strong>\>SHIP</strong>: " + nameValue;
+        myElement.innerHTML += newlog
+        setTimeout(function () {
+            myElement.innerHTML +=
+                "<br>---[<strong>MESSAGE TRANSMITTED</strong>]---<br>"
+        }, 1000);
+    } else {
+        setTimeout(function () {
+            myElement.innerHTML += "<br>---[<strong>MESSAGE FAILURE: NO TARGET</strong>]---<br>";
+        }, 1000);
+    }
+    //IF VALID MESSAGE//
+    // Reply logic
+    if (nameValue.includes("STNB")) {
+        setTimeout(function () {
+            const reply = rand(STNA["greeting"]);
+            myElement.innerHTML += "<br>\><strong>STNB</strong>: " + reply + "<br>";
+        }, 5000);
+    }
+    if (nameValue.includes("STNA")) {
+        setTimeout(function () {
+            const reply = rand(STNA["greeting"]);
+            myElement.innerHTML += "<br>\><strong>STNA</strong>: " + reply + "<br>";
+        }, 5000);
+    }
+    if (nameValue.includes("STNC")) {
+        setTimeout(function () {
+            const reply = rand(STNA["greeting"]);
+            myElement.innerHTML += "<br>\><strong>STNC</strong>: " + reply + "<br>";
+        }, 5000);
+    }
+
+
+    //------------------------------
+    if (nameValue.includes("HNTR")) {
+        fetch(`https://brodcast.aether-tree.com/Kay/Outbound/${nameValue}`)
+
+
+
+    }
+});
+*/
 function write(x, y) {
     try {
         fs.createWriteStream(y).write(x)
@@ -21,6 +96,8 @@ if (time < 10) {
 
 const STNA = {
     "greeting": [`@SHIP good ${timegreet}`],
+    "trade": [`@SHIP Sorry, I can't spare any`, `@SHIP Sure, I can do 5&#x2102; for a tank`],
+    "tradeYes": [`('-')7`]
 };
 //-------------------------------
 
@@ -57,12 +134,9 @@ myForm.addEventListener('submit', function (event) {
     const myElement = document.getElementById('radio');
     //CHECKING VALID MESSAGE//
     if (nameValue.includes("@")) {
-        fetch(`https:Brodcast.aether-tree.com/u/${nameValue}/Outbound/${message}`);
-        let newlog = `<br> <strong>\>SHIP</strong>: ${nameValue}:// ${message}`;
-        myElement.innerHTML += newlog
         setTimeout(function () {
-            myElement.innerHTML +=
-                "<br>---[<strong>MESSAGE TRANSMITTED</strong>]---<br>"
+            let newlog = "<br> <strong>\>SHIP</strong>: " + nameValue + " " + message;
+            myElement.innerHTML += newlog
         }, 1000);
     } else {
         setTimeout(function () {
@@ -71,28 +145,32 @@ myForm.addEventListener('submit', function (event) {
     }
     //IF VALID MESSAGE//
     // Reply logic
-    if (nameValue.includes("STNB")) {
-        setTimeout(function () {
-            const reply = rand(STNA["greeting"]);
-            myElement.innerHTML += "<br>\><strong>STNB</strong>: " + reply + "<br>";
-        }, 5000);
-    }
     if (nameValue.includes("STNA")) {
         setTimeout(function () {
             const reply = rand(STNA["greeting"]);
             myElement.innerHTML += "<br>\><strong>STNA</strong>: " + reply + "<br>";
         }, 5000);
     }
+
+    if (nameValue.includes("STNB")) {
+        setTimeout(function () {
+            const reply = rand(STNA["greeting"]);
+            myElement.innerHTML += "<br>\><strong>STNB</strong>: " + reply + "<br>";
+        }, 5000);
+    }
+
     if (nameValue.includes("STNC")) {
         setTimeout(function () {
             const reply = rand(STNA["greeting"]);
             myElement.innerHTML += "<br>\><strong>STNC</strong>: " + reply + "<br>";
         }, 5000);
     }
-
-
     //------------------------------
-    if (nameValue.includes("SHIP")) {
+    if (nameValue.includes("SEND")) {
+        fetch(`https:Brodcast.aether-tree.com/u/Kay/Outbound/${message}`);
+        let newlog = `<br> <strong>\>BROADCASTING</strong>: ${message}`;
+        myElement.innerHTML += newlog
 
     }
-});
+}
+);
