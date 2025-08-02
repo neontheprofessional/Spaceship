@@ -65,7 +65,7 @@ setInterval(function () {
             const credits = data.Credits + shipCreds
             const pilotStatus = getCookie("status")
             const shipStatus = getCookie("shipstatus")
-            const fuelStore = Math.floor((Number(getCookie("fuelStore")) / 100) * 100)
+            const fuelStore = Math.floor(Number(getCookie("fuelStore")))
             const fuel = Math.floor((Number(getCookie("fuel")) / 100) * 100)
             const engine = Number(getCookie("engine"))
             let waterBar = null;
@@ -143,7 +143,7 @@ setInterval(function () {
 
             let result = "<strong>pilot status</strong>: " + pilotStatus + "<br><strong>hydration levels</strong>: " + waterBar + "<br>" +
                 "<strong>caffeine levels</strong>: " + caffeineBar + "<br>" +
-                "<strong>fuel levels</strong>: " + fuelBar + "<br>" + "<strong>fuel stores</strong>:" + fuelStoreBar + "<br>" +
+                "<strong>fuel levels</strong>: " + fuelBar + "<br>" + "<strong>fuel stores</strong>: " + fuelStoreBar + "<br>" +
                 "<strong>credits</strong>: " + credits + "&#8450" + "<br>" + "<strong>engine health</strong>: " + engineBar + "<br>" + "<strong>system status</strong>: " + shipStatus
 
             document.getElementById("system").innerHTML = result;

@@ -28,6 +28,7 @@ function setCookie(cname, cvalue, exdays) {
 var button = document.getElementById("refuel");
 var newFuel = null;
 button.addEventListener("click", function () {
+
     var fuelStores = getCookie("fuelStore")
     var fuel = Number(getCookie("fuel"))
 
@@ -46,6 +47,8 @@ button.addEventListener("click", function () {
     }
     setCookie("fuel", newFuel)
     document.getElementById("radio").innerHTML += "<br>\><strong>SHIP SYSTEM</strong>: FUEL REFILLED: " + 50 + "&#8461"
+
+
 })
 
 //------------------------------------------------------

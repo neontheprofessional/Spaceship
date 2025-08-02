@@ -361,7 +361,7 @@ myForm.addEventListener('submit', function (event) {
         setTimeout(function () {
             myElement.innerHTML += "||||||||||||||]"
         }, 17000);
-        const fuelStoreAdj = getCookie("fuelStore") + 35
+        const fuelStoreAdj = Number(getCookie("fuelStore")) + 35
         setCookie("fuelStore", fuelStoreAdj)
         const creditAdj = (Number(getCookie("credits")) - 2)
         setCookie("credits", creditAdj)
