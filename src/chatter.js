@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', function () {
     function rand(array) {
         return array[Math.floor(Math.random() * array.length)];
@@ -60,3 +61,4 @@ document.addEventListener('DOMContentLoaded', function () {
         myElement.innerHTML += "<br><strong>" + speaker.name + "</strong>: " + reply + "<br>";
     }, 200000);
 });
+*/

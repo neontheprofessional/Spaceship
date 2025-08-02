@@ -1,5 +1,5 @@
 
-
+//COOKIES
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -15,32 +15,41 @@ function getCookie(cname) {
     }
     return "";
 }
-
+//+
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+
 //------------------------------------------------------
 //REFUELLER
-var button = document.getElementById("buy");
+var button = document.getElementById("refuel");
 var newFuel = null;
 button.addEventListener("click", function () {
-    var fuel = getCookie("fuel")
-    fuel = Number(fuel)
+    var fuelStores = getCookie("fuelStore")
+    var fuel = Number(getCookie("fuel"))
+
+    if (fuelStores < 50) {
+        var credits = getCookie("credits")
+        var newCredits = credits - 1
+        setCookie("credits", newCredits)
+
+    } else {
+        var newFuelStores = fuelStores - 50
+        setCookie("fuelStore", newFuelStores)
+    }
     if (fuel >= 100 || (fuel + 50) > 100) { newFuel = 100 }
     else {
         newFuel = Number(fuel) + 50
     }
     setCookie("fuel", newFuel)
-    var credits = getCookie("credits")
-    var newCredits = credits - 5
-    setCookie("credits", newCredits)
-    document.getElementById("radio").innerHTML += "<br>\><strong>SHIP SYSTEM</strong>: FUEL REFILLED: " + newFuel + "&#8461"
+    document.getElementById("radio").innerHTML += "<br>\><strong>SHIP SYSTEM</strong>: FUEL REFILLED: " + 50 + "&#8461"
 })
 
-
+//------------------------------------------------------
+//AUTOPILOT
 var button2 = document.getElementById("autopilot");
 
 button2.addEventListener("click", function () {
@@ -51,14 +60,14 @@ button2.addEventListener("click", function () {
         document.getElementById("radio").innerHTML += "<br>---<strong>[&#9790;] CONTROLS SET TO AUTOPILOT [&#9789;]</strong>---"
         const message = "[SYSTEM SET TO AUTOPILOT]"
         setCookie("reduceAmount", 5)
-        fetch(`https:Brodcast.aether-tree.com/u/Kay/Outbound/${message}`);
+        fetch(`https://Broadcast.aether-tree.com/api/Kay/Outbound/${message}`);
 
     }
     else if (shipStatus === "autopilot") {
         setCookie("status", "manual")
         document.getElementById("radio").innerHTML += "<br>---<strong>CONTROLS SET TO MANUAL</strong>---"
         const message = "[SYSTEM SET TO MANUAL - PILOT ONLINE]"
-        fetch(`https:Brodcast.aether-tree.com/u/Kay/Outbound/${message}`);
+        fetch(`https://Broadcast.aether-tree.com/api/Kay/Outbound/${message}`);
     }
 
 })

@@ -37,7 +37,6 @@
     body {
       font-size: 90%;
       font-family: "Orbitron";
-      font-style: mono;
       color: rgb(110, 216, 249);
       letter-spacing: 1px;
       text-shadow: 0 0 1.5px rgb(255, 255, 255, 0);
@@ -61,22 +60,21 @@
     .container {
       display: grid;
       grid-template-areas:
+        "stats stats stats"
         "content log log"
         "content talk audioPlayer"
-        "controls stats stats"
+        "system controls controls"
         "system assignments assignments"
         "menu menu menu";
       grid-template-columns: 3fr 3fr;
       gap: 15px;
-      padding: 10px;
+      padding-top: 1em;
       max-width: 100%;
       height: auto;
     }
 
     .container>div {
       padding-left: 25px;
-      padding-top: 1px;
-      padding-bottom: 10px;
       outline: .5px solid;
       outline-color: #77d4ff;
       border-radius: 2px;
@@ -141,11 +139,12 @@
       grid-area: controls;
       padding-right: 25px;
       padding-bottom: 15px;
+      padding-top: 2em;
 
     }
 
     #stats {
-      padding-top: 1em;
+      padding-top: .2em;
     }
 
     #map {
@@ -174,10 +173,7 @@
       text-shadow: 0 0 3px rgb(255, 191, 73, 0.5);
     }
 
-    #buy {
-      margin-top: 2em;
-      margin-bottom: -3em
-    }
+
 
     a:link {
       color: rgb(255, 116, 73);
@@ -231,13 +227,11 @@
     input {
       font-size: 90%;
       font-family: "Orbitron";
-      font-style: mono;
       color: rgb(110, 216, 249);
       letter-spacing: 1px;
       background-color: rgba(78, 108, 150, 0.4);
       border: .15em solid rgb(119, 212, 255, 0.6);
       max-width: 60%;
-      margin-top: .1em;
     }
 
     input:focus {
@@ -258,12 +252,10 @@
     button {
       font-size: 90%;
       font-family: "Orbitron";
-      font-style: mono;
       color: rgb(110, 216, 249);
       letter-spacing: 1px;
       background-color: rgba(78, 108, 150, 0.4);
       border: 1.5px solid rgb(119, 212, 255, 0.6);
-      max-width: auto;
       margin-top: .1em;
     }
 
@@ -318,7 +310,7 @@
       <p id="stats"></p>
     </div>
     <div class="controls">
-      <button id="buy">REFUEL</button>
+      <button id="refuel">REFUEL</button>
       <button id="autopilot">AUTOPILOT</button>
       <p id="controls"></p>
     </div>

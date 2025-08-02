@@ -23,7 +23,9 @@ setInterval(function () {
             const shipLocation = data.shipLocation;
             const systemsOnline = data.systemsOnline;
             const systemsOffline = data.systemsOffline;
-            const engineStatus = data.engineStatus;
+            const nav = getCookie("navigation");
+            const ls = getCookie("lifesupport");
+            const comms = getCookie("communications");
 
             const fuel = Math.floor((Number(getCookie("fuel")) / 100) * 100)
 
@@ -42,7 +44,7 @@ setInterval(function () {
             if (fuel >= 81 && 90 >= fuel) fuelBar = `||||||||| - ${fuel}% `;
             if (fuel >= 91 && 100 >= fuel) fuelBar = `|||||||||| - ${fuel}% `;
 
-            const engine = (data.engineStatus / 100) * 100;
+            const engine = (Number(getCookie("engine")) / 100) * 100;
             let engineBar = null;
             if (engine === 0) fuelBar = ` - ${fuel}% `;
             if (engine >= 10 && 20 >= engine) fengineBar = `| - ${engine}% `;
@@ -62,7 +64,7 @@ setInterval(function () {
 
                 + "<br><strong>Fuel Levels</strong>: <strong>" + fuelBar + " |</strong> <i>" + fuel + "/100</i>" + "<br><strong>Engine Health</strong>: <strong>"
 
-                + engineBar + " |</strong> <i>" + data.engineStatus + "/100</i>" + "<br><br><strong>Location</strong>: " + shipLocation + "<br><strong>Online</strong> : " + systemsOnline + "<br><strong>Offline</strong> :" + systemsOffline
+                + engineBar + " |</strong> <i>" + data.engineStatus + "/100</i>" + "<br><br><strong>Location</strong>: " + shipLocation + "<br><strong>Navigations</strong>: " + nav + "<br><strong>Life Support</strong>: " + ls + "<br><strong>Communications</strong>: " + comms
 
             document.getElementById("status").innerHTML = result;
 

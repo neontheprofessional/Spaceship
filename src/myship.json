@@ -1,8 +1,8 @@
 {
     "engineStatus": 100,
-    "shipName": "L-X47",
-    "shipType": "Lurker",
-    "shipClass": "L1",
+    "shipName": "EV_X47",
+    "shipType": "Exploratory Vehible",
+    "shipClass": "EV1",
     "shipLocation": "Docked at Spaceport Gallima",
     "fuelLevel": 100,
     "systemsOnline": [
