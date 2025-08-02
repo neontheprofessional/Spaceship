@@ -237,7 +237,7 @@ myForm.addEventListener('submit', function (event) {
     //------------//------------//------------//------------//------------//
     const barter = [`35 &#8461; of fuel for 2 &#8450;`]
     const tech = ["solar array", "s-band antenna", "sun sensor", "s-band feed", "l-band feed",]
-    const xtrade = [`"XTRD_01779VA","XTRD_05532VA","XTRD_90338VA"`]
+    const xtrade = [`"@XTRD_01779VA"`, `"@XTRD_05532VA"`, `"@XTRD_90338VA"`]
     const repairAction = ["fiddling with", "fixing", "reasoning with", "negotiating with"]
     const action1 = [`monitoring frequencies`]
     const action2 = [`reheating a symProtein in the flavour of Terran Bovine`]
@@ -245,6 +245,7 @@ myForm.addEventListener('submit', function (event) {
     const story = [`theres a story from the old world i heard once, about terrans who destroyed their machine replacements in glorious violent protest. thinking about that for absolutely no reason at all.`,
 
         `i've been scanning one of those dresorilian books, the one with the pilot who falls into some kind of human-type marriage arrangement with a gieych? free on the TELLARI™©® mediaHub® at least.`,]
+
     const STNA = {
         //GREETING
         "greeting": [`@SHIP Good ${timegreet} from TELLARI™©® SynXComm™ SATELLITE STATION A`, `@SHIP Greetings from TELLARI™©® SynXComm™ SATELLITE STATION A`],
@@ -259,7 +260,7 @@ myForm.addEventListener('submit', function (event) {
         //GREETING
         "greeting": [`@SHIP ${timegreet} fellow traveller. please ignore the bot. what can I do for you today?`, `@SHIP please ignore it, greetings, this is CO Amutgex`, `@SHIP sorry it still talks no matter what i &#9736;&#9737;&#9740;&#x2629;ing do [ERROR: "&#9736;&#9737;&#9740;&#x2629" > TRANSLATION UNAVAILABLE]. salutations`, `@SHIP ${timegreet}, neighbour. ignore the bot. what can i do for you?`, `@SHIP sorry, it still talks even if i bypass the baby monitor. what can i do for you, neighbour?`,],
         //STATUS
-        "status": [`@SHIP well the AI just wiped a full syndisk of podcasts & blocked the media channel <br><br>\><strong>CO_AMUTGEX</strong>: @SHIP so i'm about as well as you'd be doing if the robot you got saddled with babysitting wiped all your podcasts & blocked your media channel <br><br>\><strong>CO_AMUTGEX</strong>: @SHIP what can we at TELLARI™©® SynXComm™ SATELLITE STATION A do for you today, neighbour`,
+        "status": [`@SHIP well the AI just wiped a full syndisk of podcasts & blocked the media channel <br><br>\><strong>CO_AMUTGEX</strong>: @SHIP so i'm about as well as you'd be doing if the robot you got saddled with babysitting wiped all your podcasts & blocked your media channel <br><br>\><strong>CO_AMUTGEX</strong>: @SHIP a good excercise in patience. what can we at TELLARI™©® SynXComm™ SATELLITE STATION A do for you today, neighbour`,
 
             `@SHIP well, i'm alive so that's something. what can I do for you, neighbour?`,
 
@@ -271,7 +272,11 @@ myForm.addEventListener('submit', function (event) {
         //TRADE - initiate
         "trade": [`@SHIP don't worry, i disabled its snitch protocols. happy to trade. i can do ${rand(barter)} & i don't haggle`, `@SHIP ignore that. sure, i've got ${rand(barter)}, no counteroffers`, `@SHIP it can't do anything, you're fine. happy to trade with you, neighbour. i've got ${rand(barter)}, take it or leave it`],
         //TRADE - accept
-        "tradeYes": [`@SHIP great - just send "YES" to my XTRADE account > @XTRD_01779VA, i've set it up for you`, `@SHIP ay ay, captain. you can transfer the credits to to my XTRADE account > @XTRD_01779VA, just send "YES" `],
+        "tradeYes": [`@SHIP great - just send "YES" to my XTRADE account > ${rand(xtrade)},, i've set it up for you`, `@SHIP ay ay, captain. you can transfer the credits to to my XTRADE account > ${rand(xtrade)}, just send "YES" `],
+        //TRADE - decline
+        "tradeNO": [`@SHIP alright, let me know if you change your mind`, `@SHIP no hard feelings, neightbour`],
+        //THANKS
+        "thank": [`@SHIP anytime, neighbour. stay safe out there <br><br>---[<strong>CONNECTED TO: </strong> TELLARI™©® SYNXCOMM™ SATELLITE STATION A - DIRECT COMMS SYSTEM]---<br>`, `@SHIP happy to help, neighbour. to your health o7<br><br>---[<strong>DISCONNECTED FROM: </strong> TELLARI™©® SYNXCOMM™ SATELLITE STATION A - DIRECT COMMS SYSTEM]---<br>`, `@anytime. safe travels<br><br>---[<strong>DISCONNECTED FROM: </strong> TELLARI™©® SYNXCOMM™ SATELLITE STATION A - DIRECT COMMS SYSTEM]---<br>`, `@SHIP from my hands to yours, neighbour. Keep well<br><br>---[<strong>DISCONNECTED FROM: </strong> TELLARI™©® SYNXCOMM™ SATELLITE STATION A - DIRECT COMMS SYSTEM]---<br>`,]
     };
 
     //------------//------------//------------//------------//------------//
@@ -281,17 +286,19 @@ myForm.addEventListener('submit', function (event) {
     //GREETING
     if (message.includes("hello") || message.includes("hi") || message.includes("hey") || message.includes("good morning") || message.includes("good afternoon") || message.includes("good evening") || message.includes("hail")) { lib = "greeting" }
     //STATUS
-    else if (message.includes("how" && "you") && ((!message.includes("cat") && !message.includes("feline") && !message.includes("naliv"))) || message.includes("how" && "it" && "going")) { lib = "status" }
+    else if (((message.includes("how") && message.inludes("you")) && ((!message.includes("cat") && !message.includes("feline") && !message.includes("naliv")))) || (message.includes("how" && "it" && "going"))) { lib = "status" }
     //ACTIVITY
     else if (message.includes("what" && "up") || message.includes("what" && "doing")) {
         { lib = "activity" }
     }
+    //THANKS
+    else if (message.includes("thanks") || message.includes("thank you")) { lib = "thank" }
     //KITTY
     else if (message.includes("cat") || message.includes("naliv") || message.includes("feline")) { lib = "kitty" }
     //TRADE-initiate
-    else if (message.includes("trade")) { lib = "trade" }
+    else if (message.includes("trade") || message.includes("buy") || message.includes("open for")) { lib = "trade" }
     //TRADE-decline
-
+    else if ((AMUTGEXmode === "trade") && ((message.includes("no") || message.includes("leave it") || message.includes("cancel") || message.includes("never mind") || message.includes("too high")))) { lib = "tradeNo" }
     //TRADE-accept
     else if ((AMUTGEXmode === "trade") && ((message.includes("yes") || message.includes("sure") || message.includes("ok") || message.includes("sounds good") || message.includes("take it") || message.includes("deal")))) { lib = "tradeYes" }
     //--------PRINT-------
